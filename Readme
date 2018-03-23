@@ -1,0 +1,37 @@
+The IPC multichat system.
+
+The answer takes two program codes. The first one constitutes of the server code and the client code. The server code opens a socket file using the AF_LINUX protocol. The server code runs on a seperate terminal and creates a thread for each user as soon as it connects using the client code. The client code for each client runs seperately on a terminal.
+	
+	Compilation:
+
+		Run the Makefile using the make command. Run the server code on a terminal and the client code, each on a different terminal.
+
+	Testing:
+
+		The user should give input as the idOfTheUser<space>Message.
+		The id of the user is displayed on the server terminal as soon as the user is connected to the seocket.
+		The idOfTheUser variable: -1 for the broadcasting of message every user. 
+		If the user does not exist, the output displays error.
+
+	Output:
+
+		The message is recieved as user:<sendingUserID> message:<theMessageUserID>
+
+	Error Values:
+
+		Many errors were handled. 
+			
+			1. The client exists or not.
+				i. It is intimated on both sides - server and client.
+			
+			2. The client fileDescriptor is able to recieve or not, or if the client is offline.
+
+			3. If the file exists or not on which the socket is opened for the client side code.
+
+			4. Every client exists once the server is closed.
+
+			5. Null message: users presses "enter".
+
+			6. Invalid users.
+
+			7. File is delelted (if present before) before the local creates a file for the socket.
